@@ -66,8 +66,11 @@ With these extra header options:
 
 Will return*:
     ```<https://my-profile.eu/people/deiu/card#me>
+    
         a foaf:Person ;
+    
         foaf:name "Andrei Vlad Sambra" ;
+    
         foaf:givenName "Andrei Vlad" ;
         . . .
     ```
