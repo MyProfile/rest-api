@@ -1,0 +1,1235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a8" title="MyProfile REST API">
+  <file path="classes/Profile.php" hash="ae6017a0cf234c2d6f43ad4b013fa907" package="Default">
+    <docblock line="2">
+      <description><![CDATA[Copyright (C) 2012 MyProfile Project]]></description>
+      <long-description><![CDATA[<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is furnished
+ to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>]]></long-description>
+      <tag line="2" name="author" description="Andrei Sambra"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="30" package="Default">
+      <extends/>
+      <name>Classes_Profile</name>
+      <full_name>\Classes_Profile</full_name>
+      <docblock line="25">
+        <description><![CDATA[Profile class]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="25" name="todo" description="use boolean return methods for current functions which return html"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="33" namespace="global" package="Default">
+        <name>$endpoint</name>
+        <default><![CDATA[]]></default>
+        <docblock line="32">
+          <description><![CDATA[SPRAQL endpoint address]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="35" namespace="global" package="Default">
+        <name>$ttl</name>
+        <default><![CDATA[]]></default>
+        <docblock line="34">
+          <description><![CDATA[Time to live value for cached data]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="37" namespace="global" package="Default">
+        <name>$webid</name>
+        <default><![CDATA[]]></default>
+        <docblock line="36">
+          <description><![CDATA[The user's WebID URI]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="39" namespace="global" package="Default">
+        <name>$base_uri</name>
+        <default><![CDATA[]]></default>
+        <docblock line="38">
+          <description><![CDATA[The server's FQDN (i.e.]]></description>
+          <long-description><![CDATA[<p>http://example.com/</p>]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="41" namespace="global" package="Default">
+        <name>$cache_dir</name>
+        <default><![CDATA[]]></default>
+        <docblock line="40">
+          <description><![CDATA[Cache dir (not used for now)]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="43" namespace="global" package="Default">
+        <name>$primarytopic</name>
+        <default><![CDATA[]]></default>
+        <docblock line="42">
+          <description><![CDATA[The primary topic of a profile document]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="45" namespace="global" package="Default">
+        <name>$graph</name>
+        <default><![CDATA[]]></default>
+        <docblock line="44">
+          <description><![CDATA[EasyRdf graph object containing the profile RDF data]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="47" namespace="global" package="Default">
+        <name>$profile</name>
+        <default><![CDATA[]]></default>
+        <docblock line="46">
+          <description><![CDATA[EasyRdf resource object containing the user's FOAF profile]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="49" namespace="global" package="Default">
+        <name>$fullName</name>
+        <default><![CDATA[]]></default>
+        <docblock line="48">
+          <description><![CDATA[The user's full name]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="51" namespace="global" package="Default">
+        <name>$picture</name>
+        <default><![CDATA[]]></default>
+        <docblock line="50">
+          <description><![CDATA[The user's profile picture (avatar)]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="53" namespace="global" package="Default">
+        <name>$feed_hash</name>
+        <default><![CDATA[]]></default>
+        <docblock line="52">
+          <description><![CDATA[The user's RSS feed hash (feed id)]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="55" namespace="global" package="Default">
+        <name>$user_hash</name>
+        <default><![CDATA[]]></default>
+        <docblock line="54">
+          <description><![CDATA[The user's hash (local id)]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="57" namespace="global" package="Default">
+        <name>$email</name>
+        <default><![CDATA[]]></default>
+        <docblock line="56">
+          <description><![CDATA[The user's email address]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="59" namespace="global" package="Default">
+        <name>$count</name>
+        <default><![CDATA[]]></default>
+        <docblock line="58">
+          <description><![CDATA[The number of profile triples returned by SPARQL]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="61" namespace="global" package="Default">
+        <name>$on_behalf</name>
+        <default><![CDATA[]]></default>
+        <docblock line="60">
+          <description><![CDATA[On behalf of whom is the action made (i.e.]]></description>
+          <long-description><![CDATA[<p>a user's WebID)</p>]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="63" namespace="global" package="Default">
+        <name>$cert_path</name>
+        <default><![CDATA[]]></default>
+        <docblock line="62">
+          <description><![CDATA[Path to secretary certificate]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="65" namespace="global" package="Default">
+        <name>$cert_pass</name>
+        <default><![CDATA[]]></default>
+        <docblock line="64">
+          <description><![CDATA[Secretary certificate password]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="76" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="67">
+          <description><![CDATA[Build the selectors for adding more form content (default ttl is 24h)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="67" name="param" description="the WebID of the user" type="string" variable="$webid">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="67" name="param" description="the server's FQDN" type="string" variable="$base_uri">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="67" name="param" description="the SPARQL endpoint" type="string" variable="$endpoint">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="67" name="param" description="a time to live value for cache expiration" type="integer" variable="$ttl">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="67" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="76">
+          <name>$webid</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="76">
+          <name>$base_uri</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="76">
+          <name>$endpoint</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="76">
+          <name>$ttl</name>
+          <default><![CDATA[86400]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="96" package="Default">
+        <name>sparql_cache</name>
+        <full_name>sparql_cache</full_name>
+        <docblock line="91">
+          <description><![CDATA[Cache user data into a SPARQL triplestore]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="91" name="return" description="" type="\errorString|true">
+            <type by_reference="false">\errorString</type>
+            <type by_reference="false">true</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="143" package="Default">
+        <name>sparql_graph</name>
+        <full_name>sparql_graph</full_name>
+        <docblock line="137">
+          <description><![CDATA[Load chached profile data using SPARQL (or cache if needed)
+- fallback to EasyRdf if there is a problem with the SPARQL endpoint]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="137" name="return" description="" type="true">
+            <type by_reference="false">true</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="183" package="Default">
+        <name>direct_graph</name>
+        <full_name>direct_graph</full_name>
+        <docblock line="178">
+          <description><![CDATA[Load profile data using EasyRdf]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="178" name="return" description="" type="true">
+            <type by_reference="false">true</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="204" package="Default">
+        <name>load</name>
+        <full_name>load</full_name>
+        <docblock line="198">
+          <description><![CDATA[Load the user's data (priority is for SPARQL, otherwise do it with EasyRdf)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="198" name="param" description="force a cache refresh or not" type="boolean" variable="$refresh">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="198" name="return" description="" type="true">
+            <type by_reference="false">true</type>
+          </tag>
+        </docblock>
+        <argument line="204">
+          <name>$refresh</name>
+          <default><![CDATA[false]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="265" package="Default">
+        <name>get_count</name>
+        <full_name>get_count</full_name>
+        <docblock line="260">
+          <description><![CDATA[Get the number of triples returned by SPARQL]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="260" name="return" description="" type="integer">
+            <type by_reference="false">integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="274" package="Default">
+        <name>get_graph</name>
+        <full_name>get_graph</full_name>
+        <docblock line="269">
+          <description><![CDATA[Get the user's raw graph object]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="269" name="return" description="" type="\EasyRdf_graph">
+            <type by_reference="false">\EasyRdf_graph</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="283" package="Default">
+        <name>get_profile</name>
+        <full_name>get_profile</full_name>
+        <docblock line="278">
+          <description><![CDATA[Get the user's raw profile object]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="278" name="return" description="" type="\EasyRdf_resource">
+            <type by_reference="false">\EasyRdf_resource</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="292" package="Default">
+        <name>get_primarytopic</name>
+        <full_name>get_primarytopic</full_name>
+        <docblock line="287">
+          <description><![CDATA[Get the primary topic of a profile object]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="287" name="return" description="" type="\EasyRdf_resource">
+            <type by_reference="false">\EasyRdf_resource</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="301" package="Default">
+        <name>get_feed</name>
+        <full_name>get_feed</full_name>
+        <docblock line="296">
+          <description><![CDATA[Get the user's RSS feed hash (feed id)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="296" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="310" package="Default">
+        <name>get_hash</name>
+        <full_name>get_hash</full_name>
+        <docblock line="305">
+          <description><![CDATA[Get the user's hash (local id)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="305" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="319" package="Default">
+        <name>get_name</name>
+        <full_name>get_name</full_name>
+        <docblock line="314">
+          <description><![CDATA[Get the user's full name]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="314" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="328" package="Default">
+        <name>get_nick</name>
+        <full_name>get_nick</full_name>
+        <docblock line="323">
+          <description><![CDATA[Get the user's nickname]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="323" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="337" package="Default">
+        <name>get_picture</name>
+        <full_name>get_picture</full_name>
+        <docblock line="332">
+          <description><![CDATA[Get the user's profile picture]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="332" name="return" description="(URI)" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="346" package="Default">
+        <name>get_email</name>
+        <full_name>get_email</full_name>
+        <docblock line="341">
+          <description><![CDATA[Get the user's email address]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="341" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="355" package="Default">
+        <name>get_pingback</name>
+        <full_name>get_pingback</full_name>
+        <docblock line="350">
+          <description><![CDATA[Get the user's pingback endpoint]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="350" name="return" description="(URI)" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="365" package="Default">
+        <name>serialise</name>
+        <full_name>serialise</full_name>
+        <docblock line="359">
+          <description><![CDATA[Get the whole graph, serialized in the specified format]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="359" name="param" description="serialization format (e.g. rdfxml, n3, etc.)" type="string" variable="$format">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="359" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="365">
+          <name>$format</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="377" package="Default">
+        <name>setCertParams</name>
+        <full_name>setCertParams</full_name>
+        <docblock line="369">
+          <description><![CDATA[Set the certificate parameters for secretary]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="369" name="param" description="path to the certificate file" type="string" variable="$path">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="369" name="param" description="password for the certificate" type="string" variable="$pass">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="369" name="return" description="" type="true">
+            <type by_reference="false">true</type>
+          </tag>
+        </docblock>
+        <argument line="377">
+          <name>$path</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="377">
+          <name>$pass</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="391" package="Default">
+        <name>setOnBehalf</name>
+        <full_name>setOnBehalf</full_name>
+        <docblock line="384">
+          <description><![CDATA[Set the WebID URI of the person on behalf of whom the secretary is working on]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="384" name="param" description="the WebID of a user on behalf of whom the action is done" type="string" variable="$webid">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="384" name="return" description="" type="true">
+            <type by_reference="false">true</type>
+          </tag>
+        </docblock>
+        <argument line="391">
+          <name>$webid</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="404" package="Default">
+        <name>is_friend</name>
+        <full_name>is_friend</full_name>
+        <docblock line="397">
+          <description><![CDATA[Check if the given webid is in the user's list of foaf:knows]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="397" name="param" description="the WebID of the user we're checking against" type="string" variable="$webid">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="397" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="404">
+          <name>$webid</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="423" package="Default">
+        <name>is_local</name>
+        <full_name>is_local</full_name>
+        <docblock line="416">
+          <description><![CDATA[Check if the webid is a local and return the corresponding account name]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="416" name="param" description="the WebID of the user" type="string" variable="$webid">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="416" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="423">
+          <name>$webid</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="438" package="Default">
+        <name>get_local_path</name>
+        <full_name>get_local_path</full_name>
+        <docblock line="431">
+          <description><![CDATA[Get local path for user (only if it's a local user)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="431" name="param" description="the WebID of the user" type="string" variable="$webid">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="431" name="return" description="" type="string|false">
+            <type by_reference="false">string</type>
+            <type by_reference="false">false</type>
+          </tag>
+        </docblock>
+        <argument line="438">
+          <name>$webid</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="458" package="Default">
+        <name>add_friend</name>
+        <full_name>add_friend</full_name>
+        <docblock line="450">
+          <description><![CDATA[Add a foaf:knows relation to the user's profile]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="450" name="param" description="the WebID of the user we're adding" type="string" variable="$uri">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="450" name="param" description="serialization format (e.g. rdfxml, n3, etc.)" type="string" variable="$format">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="450" name="return" description="" type="\html">
+            <type by_reference="false">\html</type>
+          </tag>
+        </docblock>
+        <argument line="458">
+          <name>$uri</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="458">
+          <name>$format</name>
+          <default><![CDATA['rdfxml']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="499" package="Default">
+        <name>del_friend</name>
+        <full_name>del_friend</full_name>
+        <docblock line="491">
+          <description><![CDATA[Remove a foaf:knows relation from the user's profile]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="491" name="param" description="the WebID of the user we're removing" type="string" variable="$uri">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="491" name="param" description="serialization format (e.g. rdfxml, n3, etc.)" type="string" variable="$format">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="491" name="return" description="" type="\html">
+            <type by_reference="false">\html</type>
+          </tag>
+        </docblock>
+        <argument line="499">
+          <name>$uri</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="499">
+          <name>$format</name>
+          <default><![CDATA['rdfxml']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="535" package="Default">
+        <name>delete_account</name>
+        <full_name>delete_account</full_name>
+        <docblock line="529">
+          <description><![CDATA[Delete a user account by removing the following tables from MySQL:
+pingback, pingback_messages, votes]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="529" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="571" package="Default">
+        <name>subscribe</name>
+        <full_name>subscribe</full_name>
+        <docblock line="566">
+          <description><![CDATA[Subscribe the user to local services (pingbacks, messages, notifications)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="566" name="return" description="" type="\html">
+            <type by_reference="false">\html</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="601" package="Default">
+        <name>unsubscribe</name>
+        <full_name>unsubscribe</full_name>
+        <docblock line="596">
+          <description><![CDATA[Unsubscribe the user from local services (removes entries from MySQL)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="596" name="return" description="" type="\html">
+            <type by_reference="false">\html</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="626" package="Default">
+        <name>subscribe_email</name>
+        <full_name>subscribe_email</full_name>
+        <docblock line="621">
+          <description><![CDATA[Subscribe the user to receive email notifications]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="621" name="return" description="" type="\html">
+            <type by_reference="false">\html</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="645" package="Default">
+        <name>unsubscribe_email</name>
+        <full_name>unsubscribe_email</full_name>
+        <docblock line="640">
+          <description><![CDATA[Unsubscribe the user from receiving email notifications]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="640" name="return" description="" type="\html">
+            <type by_reference="false">\html</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="classes/WebidAuth.php" hash="6a4e751fc18b355379c0374d4678bb7c" package="Default">
+    <docblock line="2">
+      <description><![CDATA[Copyright (C) 2012 MyProfile Project]]></description>
+      <long-description><![CDATA[<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is furnished
+ to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>]]></long-description>
+      <tag line="2" name="author" description="Andrei Sambra"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="29" package="Default">
+      <extends/>
+      <name>Classes_WebidAuth</name>
+      <full_name>\Classes_WebidAuth</full_name>
+      <docblock line="25">
+        <description><![CDATA[WebID (delegated) Authentication class]]></description>
+        <long-description><![CDATA[]]></long-description>
+      </docblock>
+      <constant namespace="global" line="65" package="Default">
+        <name>parseError</name>
+        <full_name>parseError</full_name>
+        <value><![CDATA['Cannot parse WebID']]></value>
+        <docblock line="64">
+          <description><![CDATA[]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="global" line="66" package="Default">
+        <name>nocert</name>
+        <full_name>nocert</full_name>
+        <value><![CDATA['No certificates installed in the client\'s browser']]></value>
+      </constant>
+      <constant namespace="global" line="67" package="Default">
+        <name>certNoOwnership</name>
+        <full_name>certNoOwnership</full_name>
+        <value><![CDATA['No ownership! Could not verify the the private key']]></value>
+      </constant>
+      <constant namespace="global" line="68" package="Default">
+        <name>certExpired</name>
+        <full_name>certExpired</full_name>
+        <value><![CDATA['The certificate has expired']]></value>
+      </constant>
+      <constant namespace="global" line="69" package="Default">
+        <name>noVerifiedWebId</name>
+        <full_name>noVerifiedWebId</full_name>
+        <value><![CDATA['WebId does not match the certificate']]></value>
+      </constant>
+      <constant namespace="global" line="70" package="Default">
+        <name>noURI</name>
+        <full_name>noURI</full_name>
+        <value><![CDATA['No WebID URIs found in the provided certificate']]></value>
+      </constant>
+      <constant namespace="global" line="71" package="Default">
+        <name>noWebId</name>
+        <full_name>noWebId</full_name>
+        <value><![CDATA['No identity found for existing WebID']]></value>
+      </constant>
+      <constant namespace="global" line="72" package="Default">
+        <name>IdPError</name>
+        <full_name>IdPError</full_name>
+        <value><![CDATA['Other error(s) in the IdP setup.']]></value>
+      </constant>
+      <property final="false" static="false" visibility="public" line="31" namespace="global" package="Default">
+        <name>$err</name>
+        <default><![CDATA[array()]]></default>
+        <docblock line="30">
+          <description><![CDATA[Holds our diagnostic errors]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="33" namespace="global" package="Default">
+        <name>$webid</name>
+        <default><![CDATA[array()]]></default>
+        <docblock line="32">
+          <description><![CDATA[Array of WebID URIs]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="35" namespace="global" package="Default">
+        <name>$ts</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="34">
+          <description><![CDATA[Timestamp in W3C XML format]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="37" namespace="global" package="Default">
+        <name>$cert</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="36">
+          <description><![CDATA[php array with certificate contents]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="39" namespace="global" package="Default">
+        <name>$cert_pem</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="38">
+          <description><![CDATA[Certificate in pem format]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="41" namespace="global" package="Default">
+        <name>$modulus</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="40">
+          <description><![CDATA[Value of the modulus inside the public key]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="43" namespace="global" package="Default">
+        <name>$exponent</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="42">
+          <description><![CDATA[Value of the exponent inside the public key]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="45" namespace="global" package="Default">
+        <name>$claim_id</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="44">
+          <description><![CDATA[Webid URI for which we have a match]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="47" namespace="global" package="Default">
+        <name>$cert_txt</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="46">
+          <description><![CDATA[textual representation of the client]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="49" namespace="global" package="Default">
+        <name>$tmp</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="48">
+          <description><![CDATA[Path for storing temporary files needed by Openssl]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="51" namespace="global" package="Default">
+        <name>$code</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="50">
+          <description><![CDATA[Error code for the application (if any)]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="53" namespace="global" package="Default">
+        <name>$verified</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="52">
+          <description><![CDATA[TLS client private key verification outcome]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="55" namespace="global" package="Default">
+        <name>$referrer</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="54">
+          <description><![CDATA[Service where the delegated authentication request originates from]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="57" namespace="global" package="Default">
+        <name>$_cert_path</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="56">
+          <description><![CDATA[Path to the secretary's certificate]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="59" namespace="global" package="Default">
+        <name>$_cert_pass</name>
+        <default><![CDATA[null]]></default>
+        <docblock line="58">
+          <description><![CDATA[Password for the secretary's certificate]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="61" namespace="global" package="Default">
+        <name>$genURI</name>
+        <default><![CDATA['https://my-profile.eu/certgen.php']]></default>
+        <docblock line="60">
+          <description><![CDATA[URI of the service used to generate WebIDs]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="84" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="74">
+          <description><![CDATA[Initialize the variables and perfom sanity checks]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="74" name="param" description="the path to secretary certificate" type="string" variable="$cert_path">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="74" name="param" description="the password for the secretary certificate" type="string" variable="$cert_pass">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="74" name="param" description="the URI of the site/service the request comes from" type="string" variable="$referrer">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="74" name="param" description="temporary directory" type="string" variable="$tmp">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="74" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="84">
+          <name>$cert_path</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="84">
+          <name>$cert_pass</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="84">
+          <name>$referrer</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+        <argument line="84">
+          <name>$tmp</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="208" package="Default">
+        <name>retErr</name>
+        <full_name>retErr</full_name>
+        <docblock line="201">
+          <description><![CDATA[Return the error message based on a given code]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="201" name="param" description="(e.g nocert, noVerifiedWebId, noWebId, IdPError)" type="string" variable="$code">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="201" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="208">
+          <name>$code</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="219" package="Default">
+        <name>getErr</name>
+        <full_name>getErr</full_name>
+        <docblock line="214">
+          <description><![CDATA[Return all errors generated by the authentication process]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="214" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="233" package="Default">
+        <name>getIdentity</name>
+        <full_name>getIdentity</full_name>
+        <docblock line="228">
+          <description><![CDATA[Returns the successful matching WebID]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="228" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="243" package="Default">
+        <name>processReq</name>
+        <full_name>processReq</full_name>
+        <docblock line="238">
+          <description><![CDATA[Process the authentication request according to the WebID protocol]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="238" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="346" package="Default">
+        <name>getReason</name>
+        <full_name>getReason</full_name>
+        <docblock line="341">
+          <description><![CDATA[Get the reason in case the authentication failed]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="341" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="359" package="Default">
+        <name>redirect</name>
+        <full_name>redirect</full_name>
+        <docblock line="351">
+          <description><![CDATA[Redirrect user to the referring Service Provider's page, then exit.]]></description>
+          <long-description><![CDATA[<p>The header location is signed with the private key of the IdP</p>]]></long-description>
+          <tag line="351" name="param" description="path to the key used for signing the response" type="string" variable="$privKey">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="351" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="359">
+          <name>$privKey</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="classes/Wall.php" hash="7886d65fe5bdddc0dd25d0593f6aaa36" package="Default">
+    <docblock line="2">
+      <description><![CDATA[Copyright (C) 2012 MyProfile Project]]></description>
+      <long-description><![CDATA[<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is furnished
+ to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>]]></long-description>
+      <tag line="2" name="author" description="Andrei Sambra"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="29" package="Default">
+      <extends/>
+      <name>Classes_Wall</name>
+      <full_name>\Classes_Wall</full_name>
+      <docblock line="25">
+        <description><![CDATA[Wall class]]></description>
+        <long-description><![CDATA[]]></long-description>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="32" namespace="global" package="Default">
+        <name>$owner</name>
+        <default><![CDATA[]]></default>
+        <docblock line="31">
+          <description><![CDATA[The wall's owner]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="41" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="34">
+          <description><![CDATA[Constructor method for the Wall class]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="34" name="param" description="the WebID of the user" type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="34" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="41">
+          <name>$owner</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="controllers/Profile.php" hash="56a0a65e3dd8b1448a583f8dde2b7efa" package="Default">
+    <docblock line="2">
+      <description><![CDATA[Copyright (C) 2012 MyProfile Project]]></description>
+      <long-description><![CDATA[<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is furnished
+ to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>]]></long-description>
+      <tag line="2" name="author" description="Andrei Sambra"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="28" package="Default">
+      <extends/>
+      <name>Controllers_Profile</name>
+      <full_name>\Controllers_Profile</full_name>
+      <docblock line="25">
+        <description><![CDATA[The Profile controller class handles actions related to user profiles]]></description>
+        <long-description><![CDATA[]]></long-description>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="31" namespace="global" package="Default">
+        <name>$app</name>
+        <default><![CDATA[]]></default>
+        <docblock line="30">
+          <description><![CDATA[Slim app object]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="33" namespace="global" package="Default">
+        <name>$body</name>
+        <default><![CDATA[]]></default>
+        <docblock line="32">
+          <description><![CDATA[HTTP reponse body]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="35" namespace="global" package="Default">
+        <name>$status</name>
+        <default><![CDATA[]]></default>
+        <docblock line="34">
+          <description><![CDATA[HTTP reponse code]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="37" namespace="global" package="Default">
+        <name>$webid</name>
+        <default><![CDATA[]]></default>
+        <docblock line="36">
+          <description><![CDATA[requested WebID]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="39" namespace="global" package="Default">
+        <name>$on_behalf</name>
+        <default><![CDATA[]]></default>
+        <docblock line="38">
+          <description><![CDATA[On behalf of whom is the action made (i.e.]]></description>
+          <long-description><![CDATA[<p>a user's WebID)</p>]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="41" namespace="global" package="Default">
+        <name>$_format</name>
+        <default><![CDATA[]]></default>
+        <docblock line="40">
+          <description><![CDATA[Serialization format (e.g.]]></description>
+          <long-description><![CDATA[<p>rdfxml, n3, etc.)</p>]]></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="55" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="47">
+          <description><![CDATA[Constructor for the class
+(sets the HTTP response body contents and status code)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="47" name="param" description="the Slim REST API object (used for the HTTP response)" type="\Slim" variable="$app">
+            <type by_reference="false">\Slim</type>
+          </tag>
+          <tag line="47" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="55">
+          <name>$app</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="95" package="Default">
+        <name>view</name>
+        <full_name>view</full_name>
+        <docblock line="87">
+          <description><![CDATA[Display a user's profile based on the requested format
+(sets the HTTP response body contents and status code)]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="87" name="param" description="the WebID on behalf of whom the request is made" type="string" variable="$on_behalf">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="87" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="95">
+          <name>$on_behalf</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="127" package="Default">
+        <name>deleteCache</name>
+        <full_name>deleteCache</full_name>
+        <docblock line="121">
+          <description><![CDATA[Delete a cached graph from the SPARQL store]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="121" name="param" description="the user requesting the delete action" type="string" variable="$requestOwner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="121" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="127">
+          <name>$requestOwner</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="163" package="Default">
+        <name>form</name>
+        <full_name>form</full_name>
+        <docblock line="156">
+          <description><![CDATA[Display form for manually requesting to view a user's profile]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="156" name="param" description="the server's FQDN (i.e. http://example.com)" type="string" variable="$base_uri">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="156" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="163">
+          <name>$base_uri</name>
+          <default><![CDATA['']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="188" package="Default">
+        <name>get_body</name>
+        <full_name>get_body</full_name>
+        <docblock line="183">
+          <description><![CDATA[Get the contents of the body for HTTP reponse]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="183" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="198" package="Default">
+        <name>get_status</name>
+        <full_name>get_status</full_name>
+        <docblock line="193">
+          <description><![CDATA[Get the status code for the HTTP response (e.g.]]></description>
+          <long-description><![CDATA[<p>200, 404, etc.)</p>]]></long-description>
+          <tag line="193" name="return" description="" type="integer">
+            <type by_reference="false">integer</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="middleware/ContentType.php" hash="4fb55399f621f39addd7c7459bd9a4c9" package="Default">
+    <docblock line="2">
+      <description><![CDATA[Copyright (C) 2012 MyProfile Project]]></description>
+      <long-description><![CDATA[<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is furnished
+ to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>]]></long-description>
+      <tag line="2" name="author" description="Andrei Sambra"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="31" package="Default">
+      <extends>\Slim_Middleware</extends>
+      <name>Middleware_ContentType</name>
+      <full_name>\Middleware_ContentType</full_name>
+      <docblock line="25">
+        <description><![CDATA[The ContentType middleware class sets the HTTP Content-Type header based on
+the received HTTP Accept header values.]]></description>
+        <long-description><![CDATA[<p>It also includes the current API name and version into the X-Powered-By header</p>]]></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="37" package="Default">
+        <name>call</name>
+        <full_name>call</full_name>
+        <docblock line="32">
+          <description><![CDATA[Sets the HTTP Content-Type header based on the Accept values]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="32" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <namespace name="global" full_name="global"/>
+  <marker count="1">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>

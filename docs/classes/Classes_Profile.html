@@ -1,0 +1,607 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>MyProfile REST API » \Classes_Profile</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">MyProfile REST API</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu"></ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">2</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#__construct" title="__construct :: Build the selectors for adding more form content (default ttl is 24h)"><span class="description">Build the selectors for adding more form content (default ttl is 24h)</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#add_friend" title="add_friend :: Add a foaf:knows relation to the user's profile"><span class="description">Add a foaf:knows relation to the user's profile</span><pre>add_friend()</pre></a></li>
+<li class="method public "><a href="#del_friend" title="del_friend :: Remove a foaf:knows relation from the user's profile"><span class="description">Remove a foaf:knows relation from the user's profile</span><pre>del_friend()</pre></a></li>
+<li class="method public "><a href="#delete_account" title="delete_account :: Delete a user account by removing the following tables from MySQL:
+pingback, pingback_messages, votes"><span class="description">Delete a user account by removing the following tables from MySQL:
+pingback, pingback_messages, votes</span><pre>delete_account()</pre></a></li>
+<li class="method public "><a href="#direct_graph" title="direct_graph :: Load profile data using EasyRdf"><span class="description">Load profile data using EasyRdf</span><pre>direct_graph()</pre></a></li>
+<li class="method public "><a href="#get_count" title="get_count :: Get the number of triples returned by SPARQL"><span class="description">Get the number of triples returned by SPARQL</span><pre>get_count()</pre></a></li>
+<li class="method public "><a href="#get_email" title="get_email :: Get the user's email address"><span class="description">Get the user's email address</span><pre>get_email()</pre></a></li>
+<li class="method public "><a href="#get_feed" title="get_feed :: Get the user's RSS feed hash (feed id)"><span class="description">Get the user's RSS feed hash (feed id)</span><pre>get_feed()</pre></a></li>
+<li class="method public "><a href="#get_graph" title="get_graph :: Get the user's raw graph object"><span class="description">Get the user's raw graph object</span><pre>get_graph()</pre></a></li>
+<li class="method public "><a href="#get_hash" title="get_hash :: Get the user's hash (local id)"><span class="description">Get the user's hash (local id)</span><pre>get_hash()</pre></a></li>
+<li class="method public "><a href="#get_local_path" title="get_local_path :: Get local path for user (only if it's a local user)"><span class="description">Get local path for user (only if it's a local user)</span><pre>get_local_path()</pre></a></li>
+<li class="method public "><a href="#get_name" title="get_name :: Get the user's full name"><span class="description">Get the user's full name</span><pre>get_name()</pre></a></li>
+<li class="method public "><a href="#get_nick" title="get_nick :: Get the user's nickname"><span class="description">Get the user's nickname</span><pre>get_nick()</pre></a></li>
+<li class="method public "><a href="#get_picture" title="get_picture :: Get the user's profile picture"><span class="description">Get the user's profile picture</span><pre>get_picture()</pre></a></li>
+<li class="method public "><a href="#get_pingback" title="get_pingback :: Get the user's pingback endpoint"><span class="description">Get the user's pingback endpoint</span><pre>get_pingback()</pre></a></li>
+<li class="method public "><a href="#get_primarytopic" title="get_primarytopic :: Get the primary topic of a profile object"><span class="description">Get the primary topic of a profile object</span><pre>get_primarytopic()</pre></a></li>
+<li class="method public "><a href="#get_profile" title="get_profile :: Get the user's raw profile object"><span class="description">Get the user's raw profile object</span><pre>get_profile()</pre></a></li>
+<li class="method public "><a href="#is_friend" title="is_friend :: Check if the given webid is in the user's list of foaf:knows"><span class="description">Check if the given webid is in the user's list of foaf:knows</span><pre>is_friend()</pre></a></li>
+<li class="method public "><a href="#is_local" title="is_local :: Check if the webid is a local and return the corresponding account name"><span class="description">Check if the webid is a local and return the corresponding account name</span><pre>is_local()</pre></a></li>
+<li class="method public "><a href="#load" title="load :: Load the user's data (priority is for SPARQL, otherwise do it with EasyRdf)"><span class="description">Load the user's data (priority is for SPARQL, otherwise do it with EasyRdf)</span><pre>load()</pre></a></li>
+<li class="method public "><a href="#serialise" title="serialise :: Get the whole graph, serialized in the specified format"><span class="description">Get the whole graph, serialized in the specified format</span><pre>serialise()</pre></a></li>
+<li class="method public "><a href="#setCertParams" title="setCertParams :: Set the certificate parameters for secretary"><span class="description">Set the certificate parameters for secretary</span><pre>setCertParams()</pre></a></li>
+<li class="method public "><a href="#setOnBehalf" title="setOnBehalf :: Set the WebID URI of the person on behalf of whom the secretary is working on"><span class="description">Set the WebID URI of the person on behalf of whom the secretary is working on</span><pre>setOnBehalf()</pre></a></li>
+<li class="method public "><a href="#sparql_cache" title="sparql_cache :: Cache user data into a SPARQL triplestore"><span class="description">Cache user data into a SPARQL triplestore</span><pre>sparql_cache()</pre></a></li>
+<li class="method public "><a href="#sparql_graph" title="sparql_graph :: Load chached profile data using SPARQL (or cache if needed)
+- fallback to EasyRdf if there is a problem with the SPARQL endpoint"><span class="description">Load chached profile data using SPARQL (or cache if needed)
+- fallback to EasyRdf if there is a problem with the SPARQL endpoint</span><pre>sparql_graph()</pre></a></li>
+<li class="method public "><a href="#subscribe" title="subscribe :: Subscribe the user to local services (pingbacks, messages, notifications)"><span class="description">Subscribe the user to local services (pingbacks, messages, notifications)</span><pre>subscribe()</pre></a></li>
+<li class="method public "><a href="#subscribe_email" title="subscribe_email :: Subscribe the user to receive email notifications"><span class="description">Subscribe the user to receive email notifications</span><pre>subscribe_email()</pre></a></li>
+<li class="method public "><a href="#unsubscribe" title="unsubscribe :: Unsubscribe the user from local services (removes entries from MySQL)"><span class="description">Unsubscribe the user from local services (removes entries from MySQL)</span><pre>unsubscribe()</pre></a></li>
+<li class="method public "><a href="#unsubscribe_email" title="unsubscribe_email :: Unsubscribe the user from receiving email notifications"><span class="description">Unsubscribe the user from receiving email notifications</span><pre>unsubscribe_email()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24base_uri" title="$base_uri :: The server's FQDN (i.e."><span class="description">The server's FQDN (i.e.</span><pre>$base_uri</pre></a></li>
+<li class="property private "><a href="#%24cache_dir" title="$cache_dir :: Cache dir (not used for now)"><span class="description">Cache dir (not used for now)</span><pre>$cache_dir</pre></a></li>
+<li class="property private "><a href="#%24cert_pass" title="$cert_pass :: Secretary certificate password"><span class="description">Secretary certificate password</span><pre>$cert_pass</pre></a></li>
+<li class="property private "><a href="#%24cert_path" title="$cert_path :: Path to secretary certificate"><span class="description">Path to secretary certificate</span><pre>$cert_path</pre></a></li>
+<li class="property private "><a href="#%24count" title="$count :: The number of profile triples returned by SPARQL"><span class="description">The number of profile triples returned by SPARQL</span><pre>$count</pre></a></li>
+<li class="property private "><a href="#%24email" title="$email :: The user's email address"><span class="description">The user's email address</span><pre>$email</pre></a></li>
+<li class="property private "><a href="#%24endpoint" title="$endpoint :: SPRAQL endpoint address"><span class="description">SPRAQL endpoint address</span><pre>$endpoint</pre></a></li>
+<li class="property private "><a href="#%24feed_hash" title="$feed_hash :: The user's RSS feed hash (feed id)"><span class="description">The user's RSS feed hash (feed id)</span><pre>$feed_hash</pre></a></li>
+<li class="property private "><a href="#%24fullName" title="$fullName :: The user's full name"><span class="description">The user's full name</span><pre>$fullName</pre></a></li>
+<li class="property private "><a href="#%24graph" title="$graph :: EasyRdf graph object containing the profile RDF data"><span class="description">EasyRdf graph object containing the profile RDF data</span><pre>$graph</pre></a></li>
+<li class="property private "><a href="#%24on_behalf" title="$on_behalf :: On behalf of whom is the action made (i.e."><span class="description">On behalf of whom is the action made (i.e.</span><pre>$on_behalf</pre></a></li>
+<li class="property private "><a href="#%24picture" title="$picture :: The user's profile picture (avatar)"><span class="description">The user's profile picture (avatar)</span><pre>$picture</pre></a></li>
+<li class="property private "><a href="#%24primarytopic" title="$primarytopic :: The primary topic of a profile document"><span class="description">The primary topic of a profile document</span><pre>$primarytopic</pre></a></li>
+<li class="property private "><a href="#%24profile" title="$profile :: EasyRdf resource object containing the user's FOAF profile"><span class="description">EasyRdf resource object containing the user's FOAF profile</span><pre>$profile</pre></a></li>
+<li class="property private "><a href="#%24ttl" title="$ttl :: Time to live value for cached data"><span class="description">Time to live value for cached data</span><pre>$ttl</pre></a></li>
+<li class="property private "><a href="#%24user_hash" title="$user_hash :: The user's hash (local id)"><span class="description">The user's hash (local id)</span><pre>$user_hash</pre></a></li>
+<li class="property private "><a href="#%24webid" title="$webid :: The user's WebID URI"><span class="description">The user's WebID URI</span><pre>$webid</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CClasses_Profile" id="\Classes_Profile"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Classes_Profile.html">Classes_Profile</a>
+</li>
+</ul>
+<div href="../classes/Classes_Profile.html" class="element class">
+<p class="short_description">Profile class</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>todo</th>
+<td>use boolean return methods for current functions which return html</td>
+</tr></table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
+<h2>Build the selectors for adding more form content (default ttl is 24h)</h2>
+<pre>__construct(string $webid, string $base_uri, string $endpoint, integer $ttl) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$webid</h4>
+<code>string</code><p>the WebID of the user</p></div>
+<div class="subelement argument">
+<h4>$base_uri</h4>
+<code>string</code><p>the server's FQDN</p>
+</div>
+<div class="subelement argument">
+<h4>$endpoint</h4>
+<code>string</code><p>the SPARQL endpoint</p></div>
+<div class="subelement argument">
+<h4>$ttl</h4>
+<code>integer</code><p>a time to live value for cache expiration</p></div>
+</div></div>
+</div>
+<a name="add_friend" id="add_friend"></a><div class="element clickable method public add_friend" data-toggle="collapse" data-target=".add_friend .collapse">
+<h2>Add a foaf:knows relation to the user's profile</h2>
+<pre>add_friend(string $uri, string $format) : \html</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$uri</h4>
+<code>string</code><p>the WebID of the user we're adding</p>
+</div>
+<div class="subelement argument">
+<h4>$format</h4>
+<code>string</code><p>serialization format (e.g. rdfxml, n3, etc.)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\html</code></div>
+</div></div>
+</div>
+<a name="del_friend" id="del_friend"></a><div class="element clickable method public del_friend" data-toggle="collapse" data-target=".del_friend .collapse">
+<h2>Remove a foaf:knows relation from the user's profile</h2>
+<pre>del_friend(string $uri, string $format) : \html</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$uri</h4>
+<code>string</code><p>the WebID of the user we're removing</p>
+</div>
+<div class="subelement argument">
+<h4>$format</h4>
+<code>string</code><p>serialization format (e.g. rdfxml, n3, etc.)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\html</code></div>
+</div></div>
+</div>
+<a name="delete_account" id="delete_account"></a><div class="element clickable method public delete_account" data-toggle="collapse" data-target=".delete_account .collapse">
+<h2>Delete a user account by removing the following tables from MySQL:
+pingback, pingback_messages, votes</h2>
+<pre>delete_account() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="direct_graph" id="direct_graph"></a><div class="element clickable method public direct_graph" data-toggle="collapse" data-target=".direct_graph .collapse">
+<h2>Load profile data using EasyRdf</h2>
+<pre>direct_graph() : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a name="get_count" id="get_count"></a><div class="element clickable method public get_count" data-toggle="collapse" data-target=".get_count .collapse">
+<h2>Get the number of triples returned by SPARQL</h2>
+<pre>get_count() : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>integer</code></div>
+</div></div>
+</div>
+<a name="get_email" id="get_email"></a><div class="element clickable method public get_email" data-toggle="collapse" data-target=".get_email .collapse">
+<h2>Get the user's email address</h2>
+<pre>get_email() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="get_feed" id="get_feed"></a><div class="element clickable method public get_feed" data-toggle="collapse" data-target=".get_feed .collapse">
+<h2>Get the user's RSS feed hash (feed id)</h2>
+<pre>get_feed() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="get_graph" id="get_graph"></a><div class="element clickable method public get_graph" data-toggle="collapse" data-target=".get_graph .collapse">
+<h2>Get the user's raw graph object</h2>
+<pre>get_graph() : \EasyRdf_graph</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>\EasyRdf_graph</code></div>
+</div></div>
+</div>
+<a name="get_hash" id="get_hash"></a><div class="element clickable method public get_hash" data-toggle="collapse" data-target=".get_hash .collapse">
+<h2>Get the user's hash (local id)</h2>
+<pre>get_hash() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="get_local_path" id="get_local_path"></a><div class="element clickable method public get_local_path" data-toggle="collapse" data-target=".get_local_path .collapse">
+<h2>Get local path for user (only if it's a local user)</h2>
+<pre>get_local_path(string $webid) : string | false</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$webid</h4>
+<code>string</code><p>the WebID of the user</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>false</code>
+</div>
+</div></div>
+</div>
+<a name="get_name" id="get_name"></a><div class="element clickable method public get_name" data-toggle="collapse" data-target=".get_name .collapse">
+<h2>Get the user's full name</h2>
+<pre>get_name() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="get_nick" id="get_nick"></a><div class="element clickable method public get_nick" data-toggle="collapse" data-target=".get_nick .collapse">
+<h2>Get the user's nickname</h2>
+<pre>get_nick() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="get_picture" id="get_picture"></a><div class="element clickable method public get_picture" data-toggle="collapse" data-target=".get_picture .collapse">
+<h2>Get the user's profile picture</h2>
+<pre>get_picture() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>(URI)</div>
+</div></div>
+</div>
+<a name="get_pingback" id="get_pingback"></a><div class="element clickable method public get_pingback" data-toggle="collapse" data-target=".get_pingback .collapse">
+<h2>Get the user's pingback endpoint</h2>
+<pre>get_pingback() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>(URI)</div>
+</div></div>
+</div>
+<a name="get_primarytopic" id="get_primarytopic"></a><div class="element clickable method public get_primarytopic" data-toggle="collapse" data-target=".get_primarytopic .collapse">
+<h2>Get the primary topic of a profile object</h2>
+<pre>get_primarytopic() : \EasyRdf_resource</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>\EasyRdf_resource</code></div>
+</div></div>
+</div>
+<a name="get_profile" id="get_profile"></a><div class="element clickable method public get_profile" data-toggle="collapse" data-target=".get_profile .collapse">
+<h2>Get the user's raw profile object</h2>
+<pre>get_profile() : \EasyRdf_resource</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>\EasyRdf_resource</code></div>
+</div></div>
+</div>
+<a name="is_friend" id="is_friend"></a><div class="element clickable method public is_friend" data-toggle="collapse" data-target=".is_friend .collapse">
+<h2>Check if the given webid is in the user's list of foaf:knows</h2>
+<pre>is_friend(string $webid) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$webid</h4>
+<code>string</code><p>the WebID of the user we're checking against</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="is_local" id="is_local"></a><div class="element clickable method public is_local" data-toggle="collapse" data-target=".is_local .collapse">
+<h2>Check if the webid is a local and return the corresponding account name</h2>
+<pre>is_local(string $webid) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$webid</h4>
+<code>string</code><p>the WebID of the user</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="load" id="load"></a><div class="element clickable method public load" data-toggle="collapse" data-target=".load .collapse">
+<h2>Load the user's data (priority is for SPARQL, otherwise do it with EasyRdf)</h2>
+<pre>load(boolean $refresh) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$refresh</h4>
+<code>boolean</code><p>force a cache refresh or not</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a name="serialise" id="serialise"></a><div class="element clickable method public serialise" data-toggle="collapse" data-target=".serialise .collapse">
+<h2>Get the whole graph, serialized in the specified format</h2>
+<pre>serialise(string $format) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$format</h4>
+<code>string</code><p>serialization format (e.g. rdfxml, n3, etc.)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="setCertParams" id="setCertParams"></a><div class="element clickable method public setCertParams" data-toggle="collapse" data-target=".setCertParams .collapse">
+<h2>Set the certificate parameters for secretary</h2>
+<pre>setCertParams(string $path, string $pass) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$path</h4>
+<code>string</code><p>path to the certificate file</p></div>
+<div class="subelement argument">
+<h4>$pass</h4>
+<code>string</code><p>password for the certificate</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a name="setOnBehalf" id="setOnBehalf"></a><div class="element clickable method public setOnBehalf" data-toggle="collapse" data-target=".setOnBehalf .collapse">
+<h2>Set the WebID URI of the person on behalf of whom the secretary is working on</h2>
+<pre>setOnBehalf(string $webid) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$webid</h4>
+<code>string</code><p>the WebID of a user on behalf of whom the action is done</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a name="sparql_cache" id="sparql_cache"></a><div class="element clickable method public sparql_cache" data-toggle="collapse" data-target=".sparql_cache .collapse">
+<h2>Cache user data into a SPARQL triplestore</h2>
+<pre>sparql_cache() : \errorString | true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\errorString</code><code>true</code>
+</div>
+</div></div>
+</div>
+<a name="sparql_graph" id="sparql_graph"></a><div class="element clickable method public sparql_graph" data-toggle="collapse" data-target=".sparql_graph .collapse">
+<h2>Load chached profile data using SPARQL (or cache if needed)
+- fallback to EasyRdf if there is a problem with the SPARQL endpoint</h2>
+<pre>sparql_graph() : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a name="subscribe" id="subscribe"></a><div class="element clickable method public subscribe" data-toggle="collapse" data-target=".subscribe .collapse">
+<h2>Subscribe the user to local services (pingbacks, messages, notifications)</h2>
+<pre>subscribe() : \html</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>\html</code></div>
+</div></div>
+</div>
+<a name="subscribe_email" id="subscribe_email"></a><div class="element clickable method public subscribe_email" data-toggle="collapse" data-target=".subscribe_email .collapse">
+<h2>Subscribe the user to receive email notifications</h2>
+<pre>subscribe_email() : \html</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>\html</code></div>
+</div></div>
+</div>
+<a name="unsubscribe" id="unsubscribe"></a><div class="element clickable method public unsubscribe" data-toggle="collapse" data-target=".unsubscribe .collapse">
+<h2>Unsubscribe the user from local services (removes entries from MySQL)</h2>
+<pre>unsubscribe() : \html</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>\html</code></div>
+</div></div>
+</div>
+<a name="unsubscribe_email" id="unsubscribe_email"></a><div class="element clickable method public unsubscribe_email" data-toggle="collapse" data-target=".unsubscribe_email .collapse">
+<h2>Unsubscribe the user from receiving email notifications</h2>
+<pre>unsubscribe_email() : \html</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>\html</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24base_uri" id="$base_uri"> </a><div class="element clickable property private $base_uri" data-toggle="collapse" data-target=".$base_uri .collapse">
+<h2>The server's FQDN (i.e.</h2>
+<pre>$base_uri </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"><p>http://example.com/</p></p></div></div>
+</div>
+<a name="%24cache_dir" id="$cache_dir"> </a><div class="element clickable property private $cache_dir" data-toggle="collapse" data-target=".$cache_dir .collapse">
+<h2>Cache dir (not used for now)</h2>
+<pre>$cache_dir </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24cert_pass" id="$cert_pass"> </a><div class="element clickable property private $cert_pass" data-toggle="collapse" data-target=".$cert_pass .collapse">
+<h2>Secretary certificate password</h2>
+<pre>$cert_pass </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24cert_path" id="$cert_path"> </a><div class="element clickable property private $cert_path" data-toggle="collapse" data-target=".$cert_path .collapse">
+<h2>Path to secretary certificate</h2>
+<pre>$cert_path </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24count" id="$count"> </a><div class="element clickable property private $count" data-toggle="collapse" data-target=".$count .collapse">
+<h2>The number of profile triples returned by SPARQL</h2>
+<pre>$count </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24email" id="$email"> </a><div class="element clickable property private $email" data-toggle="collapse" data-target=".$email .collapse">
+<h2>The user's email address</h2>
+<pre>$email </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24endpoint" id="$endpoint"> </a><div class="element clickable property private $endpoint" data-toggle="collapse" data-target=".$endpoint .collapse">
+<h2>SPRAQL endpoint address</h2>
+<pre>$endpoint </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24feed_hash" id="$feed_hash"> </a><div class="element clickable property private $feed_hash" data-toggle="collapse" data-target=".$feed_hash .collapse">
+<h2>The user's RSS feed hash (feed id)</h2>
+<pre>$feed_hash </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24fullName" id="$fullName"> </a><div class="element clickable property private $fullName" data-toggle="collapse" data-target=".$fullName .collapse">
+<h2>The user's full name</h2>
+<pre>$fullName </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24graph" id="$graph"> </a><div class="element clickable property private $graph" data-toggle="collapse" data-target=".$graph .collapse">
+<h2>EasyRdf graph object containing the profile RDF data</h2>
+<pre>$graph </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24on_behalf" id="$on_behalf"> </a><div class="element clickable property private $on_behalf" data-toggle="collapse" data-target=".$on_behalf .collapse">
+<h2>On behalf of whom is the action made (i.e.</h2>
+<pre>$on_behalf </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"><p>a user's WebID)</p></p></div></div>
+</div>
+<a name="%24picture" id="$picture"> </a><div class="element clickable property private $picture" data-toggle="collapse" data-target=".$picture .collapse">
+<h2>The user's profile picture (avatar)</h2>
+<pre>$picture </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24primarytopic" id="$primarytopic"> </a><div class="element clickable property private $primarytopic" data-toggle="collapse" data-target=".$primarytopic .collapse">
+<h2>The primary topic of a profile document</h2>
+<pre>$primarytopic </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24profile" id="$profile"> </a><div class="element clickable property private $profile" data-toggle="collapse" data-target=".$profile .collapse">
+<h2>EasyRdf resource object containing the user's FOAF profile</h2>
+<pre>$profile </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24ttl" id="$ttl"> </a><div class="element clickable property private $ttl" data-toggle="collapse" data-target=".$ttl .collapse">
+<h2>Time to live value for cached data</h2>
+<pre>$ttl </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24user_hash" id="$user_hash"> </a><div class="element clickable property private $user_hash" data-toggle="collapse" data-target=".$user_hash .collapse">
+<h2>The user's hash (local id)</h2>
+<pre>$user_hash </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24webid" id="$webid"> </a><div class="element clickable property private $webid" data-toggle="collapse" data-target=".$webid .collapse">
+<h2>The user's WebID URI</h2>
+<pre>$webid </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2012-08-10T14:18:51+02:00.<br></footer></div>
+</div>
+</body>
+</html>
