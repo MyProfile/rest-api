@@ -58,11 +58,15 @@ If no matching format is found, the default format will be turtle.
 ================================================================================
 
 The request:
-    HTTP/1.1 GET https://rest.example.com/profile/?webid=<urlencoded WebID uri>
+```
+HTTP/1.1 GET https://rest.example.com/profile/?webid=<urlencoded WebID uri>
+```
 
 With these extra header options:
-    Accept: text/rdf+n3
-    On-Behalf-Of: https://my-profile.eu/people/deiu/card#me
+```
+Accept: text/rdf+n3
+On-Behalf-Of: https://my-profile.eu/people/deiu/card#me
+```
 
 Will return*:
 ```
