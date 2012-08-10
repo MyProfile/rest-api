@@ -65,12 +65,12 @@ With these extra header options:
     On-Behalf-Of: https://my-profile.eu/people/deiu/card#me
 
 Will return*:
-    <https://my-profile.eu/people/deiu/card#me>
+    ```<https://my-profile.eu/people/deiu/card#me>
         a foaf:Person ;
         foaf:name "Andrei Vlad Sambra" ;
         foaf:givenName "Andrei Vlad" ;
         . . .
-
+    ```
 *The returned profile matches the access control policies specific to the user 
 on whose behalf the request is being made, and optionally the agent doing the request.
 
