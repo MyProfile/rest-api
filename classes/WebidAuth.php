@@ -165,17 +165,22 @@ class Classes_WebidAuth {
                 $this->data = $this->retErr($this->code);
             }
             
-            // get the subjectAltName from certificate
-            $alt = explode(', ', $this->cert['extensions']['subjectAltName']);
-            // find the webid URI
-            foreach ($alt as $val) {
-                if (strstr($val, 'URI:'))
-                {
-                    $webid = explode('URI:', $val);
-                    $this->webid[] = $webid[1];
+            // get the subjectAltName from certificate if it exists
+            if ($this->cert['extensions']['subjectAltName']) {
+                $alt = explode(', ', $this->cert['extensions']['subjectAltName']);
+                // find the webid URI
+                foreach ($alt as $val) {
+                    if (strstr($val, 'URI:'))
+                    {
+                        $webid = explode('URI:', $val);
+                        $this->webid[] = $webid[1];
+                    }
                 }
+            } else {
+                $this->err[] = WebIDauth::noURI;
+                $this->code = "noURI";
+                $this->data = $this->retErr($this->code);
             }
-                                
             // delete the temporary certificate file
             unlink($tmpCRTname);
         }

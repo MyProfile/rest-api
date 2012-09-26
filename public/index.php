@@ -86,10 +86,16 @@ $app->map('/auth/', function () use ($app) {
     $auth = new Auth_Webid(CERT_PATH, CERT_PASS, $issuer);  
     $isAuth = $auth->processReq();
 
-    if ($isAuth === true)
+    if ($isAuth === true) {
+        $log->LogInfo('Authenticated '.$auth->getIdentity().
+                        ' for '.$issuer.'.');
+        // redirect
         $auth->redirect(KEY_PATH);
-    else
+    } else {
+        $log->LogInfo('Could not authenticate '.$auth->getIdentity().
+                        ' for '.$issuer.'. Reason: '.$auth->getReason());
         $auth->getReason();
+    }
 })->via('GET', 'POST');
 
 // GET a user's profile

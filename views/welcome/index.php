@@ -117,7 +117,7 @@ On-Behalf-Of: https://my-profile.eu/people/deiu/card#me
 		</div>
 		<footer>
 			<p>
-				<a href="http://fuelphp.com/">MyProfile REST API</a> is released under the MIT license.<br>
+				<a href="https://github.com/MyProfile/rest-api">MyProfile REST API</a> is released under the MIT license.<br>
 				<small>Version:<?php echo VERSION;?></small>
 			</p>
 		</footer>

@@ -1,7 +1,7 @@
 1. Introduction
 ===============
 
-_MyProfile REST API_ is a REST API, operating between the UI (e.g. MyProfile) and 
+_MyProfile REST API_ is an API operating between the UI (e.g. MyProfile) and 
 the SPARQL triple store (e.g. Virtuoso). It also handles external requests from 
 other applications. _MyProfile REST API_ contains an access control mechanism, 
 operating at the triple level. All requests made to this API require WebID 
@@ -74,7 +74,7 @@ Will return*:
     a foaf:Person ;
     foaf:name "Andrei Vlad Sambra" ;
     foaf:givenName "Andrei Vlad" ;
-        . . .
+    . . .
 ```    
 *The returned profile matches the access control policies specific to the user 
 on whose behalf the request is being made, and optionally the agent doing the request.
