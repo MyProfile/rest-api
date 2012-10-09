@@ -76,14 +76,10 @@ $app->get('/', function () use ($app) {
 
 
 // Authenticate users with WebIDs
-$app->map('/auth/', function () use ($app) {
-
-    // Prepare the authentication object
-    $auth = new Classes_WebidAuth(CERT_PATH, CERT_PASS);
-    
+$app->map('/auth/', function () use ($app, $log) {   
     $issuer = trim(urldecode($app->request()->get('authreqissuer')));
     // Authenticate user
-    $auth = new Auth_Webid(CERT_PATH, CERT_PASS, $issuer);  
+    $auth = new Classes_WebidAuth(CERT_PATH, CERT_PASS, $issuer);  
     $isAuth = $auth->processReq();
 
     if ($isAuth === true) {
