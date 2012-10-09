@@ -3,9 +3,6 @@
 /* Version */
 define ('VERSION', '0.0.1');
 
-/* IDP address */
-define ('IDP', 'https://auth.my-profile.eu/auth/?authreqissuer=');
-
 /* Cache time to live - default 48h */
 define ('CACHE_TTL', '172800');
 
@@ -20,12 +17,12 @@ define ('SMTP_USERNAME', '');
 define ('SMTP_PASSWORD', '');
 
 /* Agent Identity */
-define ('AGENT_IDENTITY', 'https://my-profile.eu/agent/myp/card#me');
-define ('CERT_PATH', '../conf/myp.pass.pem');
-define ('CERT_PASS', 'password');
+define ('AGENT_IDENTITY', ''); // The WebID of the agent
+define ('CERT_PATH', ''); // The WebID certificate path
+define ('CERT_PASS', ''); // The WebID certificate pass
 
 /* Private key used to sign the authentication response redirects */
-define ('KEY_PATH', '../conf/private.key');
+define ('KEY_PATH', '');
 
 // Get the current document URI
 $page_uri = 'http';
