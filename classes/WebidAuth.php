@@ -84,8 +84,10 @@ class Classes_WebidAuth {
     public function __construct($cert_path, $cert_pass, $referrer=null, $tmp=null)
     {
         // set the certificate path and password for the secretary agent
-        $this->_cert_path = $cert_path;
-        $this->_cert_pass = $cert_pass;
+        if ($cert_path)
+            $this->_cert_path = $cert_path;
+        if ($cert_pass)    
+            $this->_cert_pass = $cert_pass;
 
         // SSL protocol
         $protocol = $_SERVER["SSL_PROTOCOL"];
@@ -285,8 +287,10 @@ class Classes_WebidAuth {
             // fetch identity for webid profile 
             $graph = new EasyRdf_Graph();
             // add secretary info (we're just being polite)
-            $graph->setCertParams($this->_cert_path, $this->_cert_pass);
-            $graph->setHeaders('Acting-On-Behalf-Of', $webid);
+            if ((isset($this->_cert_path)) && (isset($this->_cert_pass))) {
+                $graph->setCertParams($this->_cert_path, $this->_cert_pass);
+                $graph->setHeaders('Acting-On-Behalf-Of', $webid);
+            }
             $graph->load($webid);
             $person = $graph->resource($webid);
             $type = $person->type();
