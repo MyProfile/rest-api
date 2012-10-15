@@ -188,9 +188,8 @@ class Classes_WebidAuth {
         }
         else
         {
-            $this->err[] = "[Client Error] You have to provide a certificate! ".
-                            "You can create one <a href=\"".$this->genURI.
-                            "\">here</a>.";
+            header ('Location: https://my-profile.eu/profile.php?error_message=' . urlencode('You do not have a certificated installed in your browser! Please create a WebID certificate to be able to login.'));
+            exit;
         }
 		
         // check if everything is good
