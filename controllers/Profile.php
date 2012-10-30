@@ -147,7 +147,7 @@ class Controllers_Profile
             // not allowed
             // Set up the response
             $this->body = 'You are not allowed to delete profile '.$this->webid.".\n";
-            $this->status = 403;
+            $this->status = 401;
 
             return false;
         }
